@@ -6,15 +6,22 @@
 # It returns:
 #   :equilateral  if all sides are equal
 #   :isosceles    if exactly 2 sides are equal
-#   :scalene      if no sides are equal
+#        if no sides are equal
 #
 # The tests for this method can be found in
 #   about_triangle_project.rb
 # and
 #   about_triangle_project_2.rb
 #
-def triangle(a, b, c)
-  # WRITE THIS CODE
+def triangle(a, b, c) 
+  uniq = [a, b, c].uniq.size
+
+  raise TriangleError if (a + b <= c || a + c <= b || b + c <= a) 
+
+  return :equilateral if uniq == 1
+  return :isosceles if uniq == 2
+  return :scalene 
+  
 end
 
 # Error class used in part 2.  No need to change this code.
